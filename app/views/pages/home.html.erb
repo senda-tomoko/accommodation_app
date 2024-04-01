@@ -1,0 +1,27 @@
+<% content_for :body_class, 'homepage-background' %>
+<div class="main-section" id="main-section">
+  <div class="main-heading">
+    <h1>次の旅の計画に入れたい理想の宿</h1>
+    <div class="search-area">
+      <input type="text" placeholder="エリア名を入力">
+      <%= link_to '検索', '#', class: 'search-button' %>
+    </div>
+  </div>
+</div>
+
+<div class="recommended-section" id="recommended-section">
+  <div class="recommended-areas flex-container">
+    <h2>おすすめのエリア</h2>
+    <div class="area" id="tokyo">
+      <strong>東京</strong> - Tokyo
+    </div>
+    <div class="area" id="osaka">
+      <strong>大阪</strong> - Osaka
+    </div>
+    <div class="area" id="kyoto">
+      <strong>京都</strong> - Kyoto
+    </div>
+    <div class="area" id="sapporo">
+      <strong>札幌</strong> - Sapporo
+    </div>
+  </div>

@@ -1,0 +1,23 @@
+<header>
+  <div class="header-container">
+    <div class="logo">
+    <%= link_to "Potepan Share", root_path, class: "logo-link" %>
+    </div>
+  <% if user_signed_in? %>
+    <div class="dropdown">
+      <button class="dropbtn"><%= current_user.name %></button>
+        <div class="dropdown-content">
+          <%= link_to '施設の新規登録', new_room_path %>
+
+          <%= link_to 'アカウント設定', edit_user_registration_path %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        </div>
+      </div>
+    <% else %>
+      <div class="navigation">
+        <%= link_to "ログイン", new_user_session_path, class: 'nav-link login-link' %>
+        <%= link_to "新規登録", new_user_registration_path, class: 'nav-link register-link' %>
+      </div>
+    <% end %>
+  </div>
+</header>

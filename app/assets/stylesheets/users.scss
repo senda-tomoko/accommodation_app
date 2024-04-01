@@ -1,0 +1,49 @@
+/* 新規アカウント作成ボタンのスタイル */
+.create-account-btn {
+    background-color: orange;
+    border: none;
+    cursor: pointer;
+    margin: 20px auto 0;
+    border-radius: 5px; /* ボタンの角を丸くする */
+    transition: background-color 0.3s; /* 背景色の変化にアニメーションを追加 */
+}
+
+/* ログインリンクのスタイル */
+.login-link {
+  margin-top: 20px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: scale(2);
+    margin: 0 auto;
+    width: 50%; /* フォームの幅を調整する場合 */
+    min-height: calc(100vh - 100px); /* 100vhはビューポートの高さ、100pxはヘッダーとフッターの合計の高さと想定 */
+    padding-bottom: 50px; /* フッターの高さ以上の値 */
+  }
+
+.account-settings .btn {
+    color: orange;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+.save-btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+.cancel-btn {
+    background: transparent;
+    color: black;
+    border: 1px solid black;
+    padding: 10px 20px;
+    cursor: pointer;
+  }

@@ -1,0 +1,114 @@
+body {
+    font-size: 1.2rem; /* 全体的なフォントサイズを調整 */
+  }
+
+.room-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 中央揃え */
+    max-width: 500px; /* フォームの最大幅 */
+    margin: 0 auto; /* 上下の余白は0、左右は自動で中央揃え */
+    padding: 20px; /* 内側の余白 */
+  }
+
+  .field {
+    display: flex; /* Flexboxを使って項目を横に並べます */
+    align-items: center; /* 項目を縦方向の中心に揃えます */
+    margin-bottom: 20px; /* 各フォームグループの下の余白 */
+  }
+
+  .field label {
+    font-weight: bold; /* ラベルの文字を太字に */
+    font-size: 1.2rem; /* ラベルの文字サイズを大きく */
+    margin-right: 10px; /* ラベルと入力フィールドの間の余白 */
+  }
+
+
+  .field input[type="text"] {
+    width: auto; /* 入力フィールドの幅を内容に応じて調整 */
+    flex-grow: 1; /* 残りのスペースを入力フィールドで埋めます */
+  }
+
+  .btn-primary {
+    background-color: #f57c00; /* 保存ボタンの背景色 */
+    color: white; /* 保存ボタンの文字色 */
+    border: none;
+    margin-right: 10px; /* キャンセルボタンとの間隔 */
+    font-size: 1.1rem; /* ボタン内のテキストサイズを大きくする */
+    padding: 10px 20px; /* ボタンの内側の余白を増やしてサイズを大きくする
+  }
+
+  .btn-secondary {
+    background-color: white; /* キャンセルボタンの背景色 */
+    color: black; /* キャンセルボタンの文字色 */
+    border: 1px solid #ccc;
+  }
+
+/* index画面のスタイル */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+/* show画面のスタイル */
+.room-detail {
+    display: flex;
+    .room-image {
+      flex: 1;
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+    .room-info {
+      flex: 2;
+      margin-left: 20px;
+    }
+    .btn-primary {
+      background-color: #f57c00; /* オレンジ色 */
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 40px; /* 画像の下部に20pxの余白を追加 */
+    }
+    .btn-secondary {
+      background-color: #fff; /* 白色 */
+      color: #333;
+      padding: 10px 20px;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+  }
+
+  .room-image {
+    margin-top: 40px; /* 画像の上部に20pxの余白を追加 */
+  }

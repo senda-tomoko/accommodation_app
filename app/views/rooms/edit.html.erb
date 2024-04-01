@@ -1,0 +1,33 @@
+<h1>施設情報の編集</h1>
+
+<%= form_with(model: @room, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :name, "施設名" %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :detail, "施設詳細" %>
+    <%= form.text_area :detail, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price, "料金" %>
+    <%= form.text_field :price, value: @room.price.to_i, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address, "住所" %>
+    <%= form.text_field :address, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image, "画像アップロード" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "保存", class: "btn btn-primary" %>
+    <%= link_to "キャンセル", rooms_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>

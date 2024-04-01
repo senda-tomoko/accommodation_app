@@ -1,0 +1,238 @@
+@import "pages";
+@import "rooms";
+@import "users";
+
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
+    flex: 1;
+  }
+
+  .site-footer {
+    background-color: #000080; /* ネイビーブルー */
+    color: white; /* テキストの色を白に設定 */
+    text-align: center; /* テキストを中央揃えに設定（必要に応じて） */
+    padding: 10px 20px; /* 上下のパディング10px、左右のパディング20pxを設定 */
+  }
+
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000080;
+    color: white;
+    padding: 10px 20px;
+}
+
+.logo-link {
+    font-size: 2em; /* h1タグと同じサイズに合わせます。サイズは必要に応じて調整してください。 */
+    color: white; /* 文字色を白に設定 */
+    text-decoration: none; /* リンクの下線を除去 */
+  }
+
+
+.logo h1 {
+    margin: 0;
+}
+
+/* ナビゲーションリンクの基本スタイル */
+.navigation .nav-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+  /* ログインリンクのスタイル */
+.navigation .login-link {
+    /* 特に必要なスタイルがなければこのセクションは空でも構いません */
+}
+
+  /* 新規登録リンク（ボタン風）のスタイル */
+.navigation .register-link {
+    background-color: orange; /* ボタンの背景色 */
+    padding: 10px 20px; /* ボタン内のパディング */
+    border-radius: 5px; /* ボタンの角を丸くする */
+    transition: background-color 0.3s; /* 背景色の変化にアニメーションを追加 */
+}
+
+.navigation .register-link:hover {
+    background-color: #e67e22; /* ホバー時の背景色を濃いオレンジ色に */
+}
+
+/* メイン見出しのスタイル */
+.main-heading h1 {
+    font-size: 4em; /* 見出しのフォントサイズを大きく */
+    text-align: center; /* 中央揃え */
+    margin-bottom: 1em; /* 下マージンを設定 */
+}
+
+  /* 検索エリアのスタイル */
+.search-area {
+    text-align: center; /* 中央揃え */
+    margin-bottom: 1em; /* 下マージンを設定 */
+}
+
+.search-area input[type="text"] {
+    padding: 20px 40px; /* 入力欄内のパディング */
+    margin-right: 10px; /* 入力欄と検索ボタンの間隔 */
+    font-size: 1.5em;
+}
+
+.search-button {
+    background-color: orange; /* ボタンの背景色 */
+    color: white; /* ボタン内の文字色 */
+    padding: 20px 40px; /* ボタン内のパディング */
+    text-decoration: none; /* 下線を削除 */
+    border-radius: 5px; /* ボタンの角を丸くする */
+    font-size: 1.5em; /* ボタン内の文字サイズを大きく */
+    margin-left: 20px; /* 入力欄とボタンの間隔 */
+}
+
+  /* おすすめエリアのスタイル */
+.recommended-areas h2 {
+    color: black; /* 見出しの文字色 */
+    border-bottom: 2px solid orange; /* 下線をオレンジ色に */
+    display: inline-block; /* 下線をテキストの幅に合わせる */
+    margin-bottom: 0.5em; /* 見出しの下マージンを設定 */
+    text-align: center; /* 中央揃え */
+    width: 100%; /* 幅を100%に */
+}
+
+.recommended-areas ul {
+    list-style: none; /* リストのスタイルをなしに */
+    padding: 0; /* リストのパディングを0に */
+    text-align: center; /* リストを中央揃え */
+}
+
+.recommended-areas li {
+    margin-bottom: 0.5em; /* リストアイテムの下マージンを設定 */
+}
+
+.main-section {
+    background-image: url('Machu picchu.jpg'); /* 背景画像を設定 */
+    background-size: cover; /* 画像が全体にフィットするように調整 */
+    background-position: center; /* 背景画像を中央に配置 */
+    background-repeat: no-repeat; /* 画像を繰り返さない */
+    height: 100vh; /* ビューポートの高さ全体を使用 */
+    margin: 0; /* 余白をなくす */
+    color: white; /* テキストの色を白に設定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+  /* おすすめエリアセクションのスタイル */
+.recommended-section {
+    padding: 50px 0; /* 上下にパディングを追加 */
+    background-color: #f0f0f0; /* 背景色を設定 */
+    text-align: center; /* テキストを中央揃えに */
+}
+.flex-container {
+    display: flex;
+    flex-wrap: wrap; /* コンテンツが多い場合は折り返し */
+    justify-content: space-around; /* 要素間のスペースを均等に */
+    align-items: stretch; /* すべてのアイテムを同じ高さに */
+  }
+
+.area {
+    width: 150px; /* 幅を設定 */
+    height: 300px; /* 高さを設定して縦長に */
+    margin: 10px; /* 余白を設定 */
+    padding: 20px; /* パディングを設定 */
+    color: white;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px; /* 角を丸く */
+}
+
+#tokyo {
+    background-image: url('/assets/tokyo.jpg');
+}
+
+#osaka {
+    background-image: url('/assets/osaka.jpg');
+}
+
+#kyoto {
+    background-image: url('/assets/kyoto.jpg');
+}
+
+#sapporo {
+    background-image: url('/assets/sapporo.jpg');
+}
+
+#tokyo {
+    background-image: url('/assets/Tokyo.jpg');
+}
+
+#osaka {
+    background-image: url('/assets/Osaka.jpg');
+}
+
+#kyoto {
+    background-image: url('/assets/Kyoto.jpg');
+}
+
+#sapporo {
+    background-image: url('/assets/Sapporo.jpg');
+}
+
+/* ドロップダウンボタンのスタイル */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* ドロップダウンコンテンツのコンテナ */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* ドロップダウン内容 */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  /* ドロップダウン項目 */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  /* ドロップダウン項目のホバー */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+
+  /* ドロップダウンボタンのクリック時にドロップダウンコンテンツを表示 */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
