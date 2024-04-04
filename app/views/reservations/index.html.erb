@@ -29,8 +29,8 @@
         <td><%= reservation.check_out.strftime('%Y/%m/%d') %></td>
         <td><%= reservation.created_at.strftime('%Y/%m/%d %H:%M') %></td>
         <td>
-          <%= link_to '再予約', edit_reservation_path(reservation.room, reservation), class: 'btn btn-primary' %>
-          <%= link_to '予約を削除', reservation_path(reservation.room, reservation), method: :delete, data: { confirm: 'この予約を削除してもよろしいですか？' }, class: 'btn btn-danger' %>
+          <%= link_to '再予約', edit_room_reservation_path(reservation.room, reservation), class: 'btn btn-primary' %>
+          <%= button_to '予約を削除', room_reservation_path(reservation.room, reservation), method: :delete, data: { confirm: '本当に削除しますか？' }, form: { class: 'btn btn-danger' } %>
         </td>
       </tr>
     <% end %>

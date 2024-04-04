@@ -14,17 +14,16 @@
     <p>料金: <%= number_to_currency(@reservation.room.price, unit: '￥', delimiter: ',', precision: 0, format: '%u%n~') %></p>
 
     <!-- 再予約関連の入力フォーム -->
-    <%= form_with model: [@room, @reservation], url: confirm_reservations_path(@room), method: :post, local: true do |form| %>
+    <%= form_with model: [@room, @reservation], url: room_reservation_path(@room), method: :get, local: true do |form| %>
       <div class="reservation-fields">
         <p>チェックイン <%= form.date_field :check_in %></p>
         <p>チェックアウト <%= form.date_field :check_out %></p>
         <p>人数 <%= form.number_field :number_of_people, in: 1..10, step: 1 %></p>
       </div>
-
       <%= form.submit "再予約する", class: "btn btn-primary" %>
     <% end %>
 
     <!-- キャンセルボタン -->
-    <%= link_to 'キャンセル', reservations_path, class: "btn btn-secondary" %> <!-- 予約一覧ページへのリンク -->
+    <%= link_to 'キャンセル', room_reservations_path, class: "btn btn-secondary" %> <!-- 予約一覧ページへのリンク -->
   </div>
 </div>
