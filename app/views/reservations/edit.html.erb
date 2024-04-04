@@ -1,0 +1,30 @@
+<div class="room-detail">
+  <div class="room-image">
+    <% if @reservation.room.image.attached? %>
+      <%= image_tag @reservation.room.image %>
+    <% else %>
+      <%= image_tag 'hotel.png' %>
+    <% end %>
+  </div>
+
+  <div class="room-info">
+    <h2><%= @reservation.room.name %></h2>
+    <p>住所: <%= @reservation.room.address %></p>
+    <p><%= @reservation.room.detail %></p>
+    <p>料金: <%= number_to_currency(@reservation.room.price, unit: '￥', delimiter: ',', precision: 0, format: '%u%n~') %></p>
+
+    <!-- 再予約関連の入力フォーム -->
+    <%= form_with model: [@room, @reservation], url: confirm_reservations_path(@room), method: :post, local: true do |form| %>
+      <div class="reservation-fields">
+        <p>チェックイン <%= form.date_field :check_in %></p>
+        <p>チェックアウト <%= form.date_field :check_out %></p>
+        <p>人数 <%= form.number_field :number_of_people, in: 1..10, step: 1 %></p>
+      </div>
+
+      <%= form.submit "再予約する", class: "btn btn-primary" %>
+    <% end %>
+
+    <!-- キャンセルボタン -->
+    <%= link_to 'キャンセル', reservations_path, class: "btn btn-secondary" %> <!-- 予約一覧ページへのリンク -->
+  </div>
+</div>

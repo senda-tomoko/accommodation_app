@@ -1,0 +1,31 @@
+<h1>予約内容の確認</h1>
+
+<div class="reservation-detail">
+  <p><strong>チェックイン:</strong> <%= @reservation.check_in %></p>
+  <p><strong>チェックアウト:</strong> <%= @reservation.check_out %></p>
+  <% if @reservation.check_in && @reservation.check_out %>
+    <%= (@reservation.check_out - @reservation.check_in).to_i %> nights
+  <% else %>
+    <日付を入力してください>
+  <% end %>
+  <p><strong>人数:</strong> <%= @reservation.number_of_people %> 人</p>
+
+  <% if @reservation.room.present? %>
+    <%# 宿泊日数の計算 %>
+  <% nights = (@reservation.check_out - @reservation.check_in).to_i %>
+
+    <%# お支払い金額の計算 %>
+  <% total_price = nights * @reservation.room.price * @reservation.number_of_people %>
+
+    <p><strong>お支払い金額:</strong> <%= number_to_currency(total_price, unit: '￥', delimiter: ',', precision: 0) %></p>
+  <% else %>
+    <p>部屋の情報がありません。</p>
+  <% end %>
+
+  <div class="actions">
+  <%= form_with model: [@room, @reservation], url: room_reservations_path(@room), method: :post, local: true do |form| %>
+    <%= form.submit "予約を確定", class: "btn btn-primary" %>
+  <% end %>
+
+  <%= link_to 'キャンセル', new_room_reservation_path(@room), class: "btn btn-secondary" %>
+</div>

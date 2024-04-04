@@ -3,8 +3,10 @@
   <div class="main-heading">
     <h1>次の旅の計画に入れたい理想の宿</h1>
     <div class="search-area">
-      <input type="text" placeholder="エリア名を入力">
-      <%= link_to '検索', '#', class: 'search-button' %>
+      <%= form_with url: search_rooms_path, method: :get, local: true do |form| %>
+        <%= form.text_field :area, placeholder: "エリア名を入力", class: "search-input" %>
+        <%= form.submit "検索", class: "search-button" %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -12,16 +14,25 @@
 <div class="recommended-section" id="recommended-section">
   <div class="recommended-areas flex-container">
     <h2>おすすめのエリア</h2>
-    <div class="area" id="tokyo">
-      <strong>東京</strong> - Tokyo
-    </div>
-    <div class="area" id="osaka">
-      <strong>大阪</strong> - Osaka
-    </div>
-    <div class="area" id="kyoto">
-      <strong>京都</strong> - Kyoto
-    </div>
-    <div class="area" id="sapporo">
-      <strong>札幌</strong> - Sapporo
-    </div>
+    <%= link_to search_rooms_path(area: '東京'), id: "tokyo" do %>
+      <div class="area">
+        <strong>東京</strong> - Tokyo
+      </div>
+    <% end %>
+    <%= link_to search_rooms_path(area: '大阪'), id: "osaka" do %>
+      <div class="area">
+        <strong>大阪</strong> - Osaka
+      </div>
+    <% end %>
+    <%= link_to search_rooms_path(area: '京都'), id: "kyoto" do %>
+      <div class="area">
+        <strong>京都</strong> - Kyoto
+      </div>
+    <% end %>
+    <%= link_to search_rooms_path(area: '札幌'), id: "sapporo" do %>
+      <div class="area">
+        <strong>札幌</strong> - Sapporo
+      </div>
+    <% end %>
   </div>
+</div>
