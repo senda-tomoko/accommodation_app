@@ -24,6 +24,7 @@ class ReservationsController < ApplicationController
   end
 
   def index
+    # ログインしているユーザーの予約のみを取得
     @reservations = current_user.reservations.includes(:room)
   end
 

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   devise_for :users
 
+
   # Roomsのルーティング
   resources :rooms, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
     # Searchアクションへのルーティング
@@ -21,6 +22,9 @@ Rails.application.routes.draw do
   # プロフィール編集ページと更新アクションのルーティング
   get 'profile/edit', to: 'users#edit_profile', as: :edit_profile
   patch 'profile', to: 'users#update_profile', as: :update_profile
+
+  # 予約の一覧ページへのルーティング
+  get 'reservations', to: 'reservations#index', as: :user_reservations
 
   # ログアウトエラー解決のためのルーティング
   devise_scope :user do

@@ -1,38 +1,62 @@
-<%= form_for @user, url: update_profile_path, html: { multipart: true } do |f| %>
-    <% if @user.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-        <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <title>プロフィール</title>
+</head>
+<body>
+<div class="container my-5">
+  <div class="row">
+    <!-- 設定メニュー -->
+    <div class="col-md-4">
+      <div class="settings-menu mb-3">
+        <h2>設定</h2>
+        <ul class="list-unstyled">
+          <li class="menu-item mb-2"><a href="#" class="d-block p-2 border">アカウント</a></li>
+          <li class="menu-item">
+            <%= link_to 'プロフィール', update_profile_path, class: 'd-block p-2 border' %>
+          </li>
         </ul>
       </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :name %><br>
-      <%= f.text_field :name %>
     </div>
 
-    <div class="field">
-      <%= f.label :self_introduction %><br>
-      <%= f.text_area :self_introduction %>
-    </div>
+<%= form_for @user, url: update_profile_path, html: { multipart: true } do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "個のエラー") %>が発生したため、ユーザー情報を保存できませんでした：</h2>
 
-    <div class="field">
-      <%= f.label :icon_image, "アイコン画像" %>
-      <%= f.file_field :icon_image %>
-    </div>
-    <%= render 'users/user_icon', user: @user %>  <!--'パーシャルを使用'-->
-
-    </div>
-      <label class="btn btn-outline-secondary">
-        画像アップロード <%= form.file_field :icon, class: "form-control-file", style: "display: none;" %>
-      </label>
-
-    <div class="actions">
-      <%= f.submit "プロフィールを更新" %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
     </div>
   <% end %>
+
+  <div class="field">
+    <%= f.label :name, "名前" %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :self_introduction, "自己紹介" %><br>
+    <%= f.text_area :self_introduction %>
+  </div>
+
+  <div class="field">
+    <%= f.label :icon_image, "アイコン画像" %>
+    <%= f.file_field :icon_image %>
+  </div>
+
+  <!-- こちらは、ユーザーのアイコン画像を表示するパーシャルとして想定されています。 -->
+  <%= render 'users/user_icon', user: @user %>
+
+  <div class="actions">
+    <%= f.submit "プロフィールを更新" %>
+  </div>
+<% end %>
+</body>
+</html>
