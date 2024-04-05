@@ -1,24 +1,24 @@
-<%= form_for @user, url: update_profile_path, html: { multipart: true } do |f| %>
+<%= form_with model: @user, url: update_profile_path, local: true, html: { multipart: true } do |f| %>
+  <!-- フォームの内容 -->
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "個のエラー") %>が発生したため、ユーザー情報を保存できませんでした：</h2>
-
+      <h2><%= pluralize(@user.errors.count, "個のエラー") %>が発生しました：</h2>
       <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :name, "名前" %><br>
-    <%= f.text_field :name %>
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :self_introduction, "自己紹介" %><br>
-    <%= f.text_area :self_introduction %>
+    <%= f.label :self_introduction, "自己紹介" %>
+    <%= f.text_area :self_introduction, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -30,6 +30,6 @@
   <%= render 'users/user_icon', user: @user %>
 
   <div class="actions">
-    <%= f.submit "プロフィールを更新" %>
+    <%= f.submit "プロフィールを更新", class: "btn btn-primary" %>
   </div>
 <% end %>

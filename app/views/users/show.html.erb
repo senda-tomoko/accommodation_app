@@ -1,0 +1,27 @@
+
+    <!-- プロフィール情報 -->
+    <div class="col-md-8">
+      <h1>プロフィール</h1>
+
+      <div class="user-icon mb-4">
+      <% if @user && @user.icon_image.attached? %>
+        <%= image_tag @user.icon_image, alt: "プロフィールアイコン", class: "user-icon" %>
+      <% else %>
+        <%= image_tag("default_icon.png", alt: "デフォルトアイコン", class: "user-icon") %>
+      <% end %>
+    </div>
+
+      <!-- 名前の表示 -->
+      <div class="field mb-4">
+        <strong>名前:</strong>
+        <%= @user.name %>
+      </div>
+
+      <!-- 自己紹介の表示 -->
+      <div class="field mb-5">
+        <strong>自己紹介:</strong>
+        <%= @user.self_introduction %>
+      </div>
+
+
+  <%= link_to '編集', edit_profile_path, class: 'btn btn-primary' %>

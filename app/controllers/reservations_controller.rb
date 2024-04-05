@@ -1,5 +1,7 @@
 class ReservationsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:new, :show]
+  skip_before_action :authenticate_user!, only: [:new, :show]
+
   before_action :set_room, only: [:show, :new, :create, :edit, :update, :destroy]
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
 
