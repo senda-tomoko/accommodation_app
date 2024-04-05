@@ -1,28 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  <title>プロフィール</title>
-</head>
-<body>
-<div class="container my-5">
-  <div class="row">
-    <!-- 設定メニュー -->
-    <div class="col-md-4">
-      <div class="settings-menu mb-3">
-        <h2>設定</h2>
-        <ul class="list-unstyled">
-          <li class="menu-item mb-2"><a href="#" class="d-block p-2 border">アカウント</a></li>
-          <li class="menu-item">
-            <%= link_to 'プロフィール', update_profile_path, class: 'd-block p-2 border' %>
-          </li>
-        </ul>
-      </div>
-    </div>
-
 <%= form_for @user, url: update_profile_path, html: { multipart: true } do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -58,5 +33,3 @@
     <%= f.submit "プロフィールを更新" %>
   </div>
 <% end %>
-</body>
-</html>
