@@ -18,7 +18,7 @@
             <%= link_to '登録済み一覧', rooms_path %>
             <%= link_to 'アカウント設定', edit_user_registration_path %>
             <%= link_to 'マイページ', user_path(current_user) %>
-            <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+            <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'logout-link' %>
           </div>
         </div>
       </div>

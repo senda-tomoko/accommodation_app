@@ -66,6 +66,24 @@ html, body {
     transition: background-color 0.3s; /* 背景色の変化にアニメーションを追加 */
 }
 
+  /* ログアウトリンクのスタイル */
+.logout-link {
+    display: block;
+    text-align: center;
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    margin: 20px;
+
+    text-decoration: none; /* 下線を消す */
+
+  }
+
+  .logout-link:hover {
+    background-color: darkorange; /* ホバー時の背景色 */
+  }
+
+
 .navigation .register-link:hover {
     background-color: #e67e22; /* ホバー時の背景色を濃いオレンジ色に */
 }
@@ -219,6 +237,7 @@ html, body {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    text-align: center;
   }
 
   /* ドロップダウン項目 */
@@ -227,6 +246,7 @@ html, body {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    margin: 0 auto;
   }
 
   /* ドロップダウン項目のホバー */
