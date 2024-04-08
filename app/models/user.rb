@@ -8,6 +8,6 @@ class User < ApplicationRecord
 
   has_many :rooms
   has_many :reservations
-  belongs_to :user
+
 
 end
