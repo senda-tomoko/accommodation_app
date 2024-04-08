@@ -1,0 +1,25 @@
+<h1>予約内容の確認</h1>
+
+<p>チェックイン: <%= @reservation.check_in.strftime("%Y年%m月%d日") %></p>
+<p>チェックアウト: <%= @reservation.check_out.strftime("%Y年%m月%d日") %></p>
+<% @nights = (@reservation.check_out - @reservation.check_in).to_i %>
+<p><strong>宿泊日数:</strong> <%= @nights %> 泊</p>
+<p>人数: <%= @reservation.number_of_people %></p>
+
+<% @total_price = @nights * @reservation.room.price * @reservation.number_of_people %>
+<p><strong>お支払い金額:</strong> <%= number_to_currency(@total_price, unit: '￥', delimiter: ',', precision: 0) %></p>
+<p>上記の内容で正しければ「確定」ボタンを押してください。</p>
+
+<%= form_with model: [@room, @reservation], url: room_reservations_path(@room), method: :post do |form| %>
+  <!-- 予約の詳細を隠しフィールドとして含める -->
+  <%= form.hidden_field :check_in, value: @reservation.check_in %>
+  <%= form.hidden_field :check_out, value: @reservation.check_out %>
+  <%= form.hidden_field :number_of_people, value: @reservation.number_of_people %>
+  <!-- 合計金額を隠しフィールドとして含める場合 -->
+  <%= form.hidden_field :total_price, value: @total_price %>
+  <!-- 必要に応じて他のフィールドを追加 -->
+
+  <%= form.submit "予約を確定する", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to 'キャンセル', new_room_reservation_path(@room), class: "btn btn-secondary" %>

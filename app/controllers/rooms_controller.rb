@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
+
   # 検索アクション
   def search
     @rooms = Room.all
@@ -19,7 +21,7 @@ class RoomsController < ApplicationController
 
   # 施設をデータベースに保存するためのアクション
   def create
-    @room = Room.new(room_params)
+    @room = current_user.rooms.build(room_params)
     if @room.save
       redirect_to @room, notice: '施設が作成されました。'
     else
@@ -29,7 +31,7 @@ class RoomsController < ApplicationController
 
   # 施設の一覧を表示するためのアクション
   def index
-    @rooms = Room.all
+    @rooms = current_user.rooms
   end
 
   # 施設の詳細を表示するためのアクション

@@ -10,6 +10,15 @@ Rails.application.routes.draw do
       get :search
     end
 
+  resources :rooms do
+    resources :reservations do
+      collection do
+        get :confirm_new  # 確認画面を表示するためのGETリクエスト
+        post :confirm_new # 確認画面からのフォーム送信を処理するためのPOSTリクエスト
+      end
+    end
+  end
+
     # Reservationsのネストされたルーティング
     resources :reservations, only: [:show, :create, :destroy, :edit, :update, :index, :new] do
       # Confirmアクションへのカスタムルーティング
