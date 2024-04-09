@@ -1,0 +1,36 @@
+<%= form_with model: @user, url: update_profile_path, local: true, html: { multipart: true } do |f| %>
+  <!-- フォームの内容 -->
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "個のエラー") %>が発生しました：</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :self_introduction, "自己紹介" %>
+    <%= f.text_area :self_introduction, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :icon_image, "アイコン画像" %>
+    <%= f.file_field :icon_image %>
+  </div>
+
+  <!-- こちらは、ユーザーのアイコン画像を表示するパーシャルとして想定されています。 -->
+  <%= render 'users/user_icon', user: @user %>
+
+  <div class="actions">
+    <%= f.submit "プロフィールを更新", class: "btn btn-primary" %>
+    <%= button_tag "キャンセル", type: "button", class: "btn btn-secondary", onclick: "history.back();" %>
+  </div>
+<% end %>

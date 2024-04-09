@@ -1,0 +1,38 @@
+<h1>予約済み施設一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>合計料金</th>
+      <th>チェックイン日</th>
+      <th>チェックアウト日</th>
+      <th>予約確定日時</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><% if reservation.room.image.attached? %>
+          <%= image_tag reservation.room.image %>
+        <% else %>
+          <%= image_tag 'hotel.png' %>
+        <% end %></td>
+        <td><%= link_to reservation.room.name, reservation.room %></td>
+        <td><%= reservation.room.detail %></td>
+        <td><%= number_to_currency(reservation.total_price, unit: '円', format: '%n%u', precision: 0) %></td>
+        <td><%= reservation.check_in.strftime('%Y/%m/%d') %></td>
+        <td><%= reservation.check_out.strftime('%Y/%m/%d') %></td>
+        <td><%= reservation.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <td>
+          <%= link_to '再予約', edit_room_reservation_path(reservation.room, reservation), class: 'btn btn-primary' %>
+          <%= button_to '予約を削除', room_reservation_path(reservation.room, reservation), method: :delete, data: { confirm: '本当に削除しますか？' }, form: { class: 'btn btn-danger' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

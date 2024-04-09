@@ -1,0 +1,45 @@
+<h1>新規登録</h1>
+
+  <%= form_with model: @room, local: true, html: { class: "room-form" } do |form| %>
+  <% if @room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@room.errors.count, "error") %>が発生したため保存できませんでした:</h2>
+
+      <ul>
+        <% @room.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "施設名" %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :detail, "施設詳細" %>
+    <%= form.text_area :detail, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price, "料金" %>
+    <%= form.text_field :price, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address, "住所" %>
+    <%= form.text_field :address, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image, "画像アップロード" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "保存", class: "btn btn-primary" %>
+    <%= link_to "キャンセル", rooms_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>
