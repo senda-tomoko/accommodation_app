@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root 'pages#home'
   devise_for :users
 
-
   # Roomsのルーティング
   resources :rooms, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
     # Searchアクションへのルーティング
@@ -10,30 +9,25 @@ Rails.application.routes.draw do
       get :search
     end
 
-  resources :rooms do
-    resources :reservations do
+    # Reservationsのネストされたルーティング
+    resources :reservations, only: [:show, :create, :destroy, :edit, :update, :index, :new] do
       collection do
         get :confirm_new  # 確認画面を表示するためのGETリクエスト
         post :confirm_new # 確認画面からのフォーム送信を処理するためのPOSTリクエスト
+        post :confirm     # Confirmアクションへのカスタムルーティング
+        get :confirm  # 予約確認画面へのルーティング
+      end
+      member do
+        get 'confirm_edit'  # confirm_editアクションへのGETリクエストに対応
+        patch 'confirm_edit' # confirm_editアクションへのPATCHリクエストに対応（追加）
       end
     end
   end
 
-    # Reservationsのネストされたルーティング
-    resources :reservations, only: [:show, :create, :destroy, :edit, :update, :index, :new] do
-      # Confirmアクションへのカスタムルーティング
-      collection do
-        post :confirm
-      end
-    end
-  end
-
-  # プロフィール編集ページと更新アクションのルーティング
+  # プロフィール編集とユーザー詳細（マイページ）へのルーティング
   get 'profile/edit', to: 'users#edit_profile', as: :edit_profile
   patch 'profile', to: 'users#update_profile', as: :update_profile
   get '/profile', to: 'users#show', as: :user_profile
-
-   # ユーザー詳細（マイページ）へのルーティング
   resources :users, only: [:show]
 
   # 予約の一覧ページへのルーティング

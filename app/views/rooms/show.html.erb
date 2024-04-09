@@ -15,11 +15,12 @@
 
 
     <!-- 予約関連の入力フォーム -->
-    <%= form_with model: @reservation, url: room_reservations_path(@room) do |form| %>
+    <%= form_with model: [@room, Reservation.new], url: confirm_room_reservations_path(@room), method: :get do |form| %>
       <div class="reservation-fields">
         <p>チェックイン<%= form.date_field :check_in %></p>
         <p>チェックアウト<%= form.date_field :check_out %></p>
-        <p>人数<%= form.number_field :people, in: 1..10, step: 1 %></p>
+        <p>人数<%= form.number_field :number_of_people, in: 1..10, step: 1 %></p>
+        <%= form.hidden_field :room_id %>
       </div>
 
       <%= form.submit "予約する", class: "btn btn-primary" %>

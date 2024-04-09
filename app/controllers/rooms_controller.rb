@@ -37,6 +37,8 @@ class RoomsController < ApplicationController
   # 施設の詳細を表示するためのアクション
   def show
     @room = Room.find(params[:id])
+    @reservation = @room.reservations.build
+    Rails.logger.debug "Room: #{@room}, Reservation: #{@reservation}"
   end
 
   # 施設情報の編集を行うためのアクション

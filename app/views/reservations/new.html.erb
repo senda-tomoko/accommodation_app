@@ -26,7 +26,7 @@
   <% end %>
 
     <!-- 予約関連の入力フォーム -->
-    <%= form_with model: [@room, @reservation], url: confirm_new_room_room_reservations_path(@room), local: true do |form| %>
+    <%= form_with model: [@room, @reservation], url: confirm_new_room_reservations_path(@room), local: true do |form| %>
       <div class="reservation-fields">
         <p>チェックイン <%= form.date_field :check_in %></p>
         <p>チェックアウト <%= form.date_field :check_out %></p>

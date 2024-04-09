@@ -8,7 +8,7 @@
   <p><strong>人数:</strong> <%= @reservation.number_of_people %> 人</p>
 
   <% total_price = nights * @reservation.room.price * @reservation.number_of_people %>
-  <p><strong>お支払い金額:</strong> <%= number_to_currency(total_price, unit: '￥', delimiter: ',', precision: 0) %></p>
+  <p><strong>お支払い金額:</strong> <%= number_to_currency(total_price, unit: '￥', format: "%u%n", delimiter: ',', precision: 0) %></p>
   <p>上記の内容で正しければ「確定」ボタンを押してください。</p>
 
   <div class="actions">

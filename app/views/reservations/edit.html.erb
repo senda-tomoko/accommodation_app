@@ -14,7 +14,7 @@
     <p>料金: <%= number_to_currency(@reservation.room.price, unit: '￥', delimiter: ',', precision: 0, format: '%u%n~') %></p>
 
     <!-- 再予約関連の入力フォーム -->
-    <%= form_with model: [@room, @reservation], url: room_reservation_path(@room), method: :get, local: true do |form| %>
+    <%= form_for [@room, @reservation], url: confirm_edit_room_reservation_path(@room, @reservation), method: :patch do |form| %>
       <div class="reservation-fields">
         <p>チェックイン <%= form.date_field :check_in %></p>
         <p>チェックアウト <%= form.date_field :check_out %></p>
